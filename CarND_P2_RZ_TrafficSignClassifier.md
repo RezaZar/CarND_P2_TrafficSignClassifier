@@ -141,10 +141,10 @@ Final model consisted of the following layers:
 ### Train, Validate and Test the Model
 
 A validation set is used to assess how well the model is performing. To better train the model, training data is shuffled. Model and training details are as follows:
-Epochs: 100 Epochs are uses to train the model. I could not get validation accuracy of greater than 93 when trained for less epochs.
-Batch Size: Batch size is set to 200
-Learning rate: A variable learning rate is used based on epoch number, learnrate = 0.001 * pow(0.99,i), to help the model train faster at earlier epochs and avoid overfitting at later epochs
-Optimizer: Adam Optimizer is used as explained in the classroom
+* Epochs: 30 Epochs are uses to train the model. I could not get validation accuracy of greater than 93 when originally trained the model for less epochs.
+* Batch Size: Batch size is set to 200
+* Learning rate: A variable learning rate is used based on epoch number, learnrate = 0.001 * pow(0.99,i), to help the model train faster at earlier epochs and avoid overfitting at later epochs
+* Optimizer: Adam Optimizer is used as explained in the classroom
 
 
 Loss and accuracy for training and validation data is illustrated in the following graphs:
