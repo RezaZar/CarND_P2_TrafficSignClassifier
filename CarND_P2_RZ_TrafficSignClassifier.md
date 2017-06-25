@@ -23,7 +23,7 @@ Python and Numpy are used to provide statistical and visual representation of th
     Number of training examples = 34799
     Number of validation examples = 4410
     Number of testing examples = 12630
-    Image data shape = (32, 32)
+    Image data shape = (32, 32, 3)
     Number of classes = 43
     
 
@@ -140,7 +140,12 @@ Final model consisted of the following layers:
 
 ### Train, Validate and Test the Model
 
-A validation set is used to assess how well the model is performing. To better train the model, training data is shuffled. The model is trained for 100 Epochs with a batch size of 200.
+A validation set is used to assess how well the model is performing. To better train the model, training data is shuffled. Model and training details are as follows:
+Epochs: 100 Epochs are uses to train the model. I could not get validation accuracy of greater than 93 when trained for less epochs.
+Batch Size: Batch size is set to 200
+Learning rate: A variable learning rate is used based on epoch number, learnrate = 0.001 * pow(0.99,i), to help the model train faster at earlier epochs and avoid overfitting at later epochs
+Optimizer: Adam Optimizer is used as explained in the classroom
+
 
 Loss and accuracy for training and validation data is illustrated in the following graphs:
 
@@ -182,7 +187,26 @@ The trained LeNet architecture is used to predict the class for the five images.
 
     Model Accuracy on the 5 New Images = 80.0 %
  
- The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. 
+ The model was able to correctly guess 4 of the 5 traffic signs, as summarized below, which gives an accuracy of 80%. This is less than training, validation and testing accuracies. I expected this kind of performance as the new images are not from the original German Traffic Signs data set and I also tried to find challenging images (some with background, some with low resolution) to better analyze the performance of my model and learn from it. 
  
- The model incorrectly predicted the "End of No Passing" sign as a "No Passing" sign, although "End of No Passing" had the second highest softmox probability. The reason for the incorrect prediction could be attributed to small number of "End of No Passing" images in the training data set. Also, using color images rather than grayscale images might help to better distinguish between these two signs.
+| Image		            |     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Speed Limit (60km/h)  | Speed Limit (60km/h)  						| 
+| Stop       			| Stop  										|
+| Ahed Only				| Ahed Only										|
+| Bumpy Road      		| Bumpy Road					 				|
+| End of no Passing		| No Passing        							|
+ 
+ For the "Speed Limit (60km/h)" image, the model classified it correctly with a very high softmox probability. Other top four predictions are all speed limit-related predictions which was expected as the speed limit signs share many similar features.
+ 
+ For the "Stop" image, I used a noisy image but the model successfully classified it. It is interesting that "Speed Limit (60 km/h)" is one of the top 5 predictions. I think this is due to the similarity of "0" and "O" in the middle of these two images.
+ 
+ For the "Ahead Only" image, I chose a tilted image to challenge the model. However, the model correctly classifed this sign. 
+ 
+ For the "Bumpy Road" image, I used a low quality image with background. Model predicted it correctly and the top softmox probability for this image is still high, but the certainty of the model is lower for this compared to previous cases as shown in the bar charts.
+ 
+ For the "No Passing", I used the most challenging image compared to all previous cases. The image is noisy, with poor quality and poor contrast with the background. These led to thhe model incorrectly predicting the "End of No Passing" sign as a "No Passing" sign, although "End of No Passing" had the second highest softmox probability. Another reason reason for the incorrect prediction could be attributed to small number of "End of No Passing" images in the training data set. Also, using color images rather than grayscale images might help to better distinguish between these two signs.
+
+Softmox probabilities for all of the 5 imaages are shown in the bar charts. Reporting them here again for completeness:
+ 
 
