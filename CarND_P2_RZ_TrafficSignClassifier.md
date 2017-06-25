@@ -167,7 +167,7 @@ Final accuracy for the train, validation and test data is as follows:
 ---
 
 ## Step 3: Test a Model on New Images
-Five German traffic signs found on the web are used here to test the model on new data. 
+Five German traffic signs found on the web are used here to test the model on new data. To challenge the model, images with background, poor resolution, noise, blurines and poor contrast with the background were considered:
 
 
 ![png](output_24_0.png)
@@ -188,6 +188,8 @@ The trained LeNet architecture is used to predict the class for the five images.
     Model Accuracy on the 5 New Images = 80.0 %
  
  The model was able to correctly guess 4 of the 5 traffic signs, as summarized below, which gives an accuracy of 80%. This is less than training, validation and testing accuracies. I expected this kind of performance as the new images are not from the original German Traffic Signs data set and I also tried to find challenging images (some with background, some with low resolution) to better analyze the performance of my model and learn from it. 
+ 
+ Prediction results are as follows:
  
 | Image		            |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
